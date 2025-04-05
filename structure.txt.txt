@@ -1,0 +1,15 @@
+my-blog/
+├── index.html            ← Home page (blog intro + recent posts)
+├── about.html            ← About you
+├── contact.html          ← Contact form (non-functional or via Formspree)
+├── blog/
+│   ├── post1.html        ← Blog post 1
+│   ├── post2.html        ← Blog post 2
+│   └── ...               ← More blog posts
+├── css/
+│   └── style.css         ← Main stylesheet
+├── js/
+│   └── main.js           ← Dark mode toggle, menu toggle, etc.
+├── images/
+│   └── banner.jpg        ← Banner or post images
+└── .gitignore            ← Git ignore file
