@@ -305,3 +305,42 @@ window.addEventListener('popstate', (event) => {
         showBlogList();
     }
 });
+
+// Component loader
+async function loadComponent(elementId, componentPath) {
+    try {
+        const response = await fetch(componentPath);
+        const html = await response.text();
+        document.getElementById(elementId).innerHTML = html;
+    } catch (error) {
+        console.error('Error loading component:', error);
+    }
+}
+
+// Theme toggler
+function initThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Set initial theme
+    document.body.classList.toggle('dark-theme', prefersDark.matches);
+    
+    themeToggle?.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        localStorage.setItem('theme', 
+            document.body.classList.contains('dark-theme') ? 'dark' : 'light'
+        );
+    });
+}
+
+// Initialize components
+async function initComponents() {
+    await Promise.all([
+        loadComponent('header-container', '/components/header.html'),
+        loadComponent('footer-container', '/components/footer.html')
+    ]);
+    initThemeToggle();
+}
+
+// Run initialization
+document.addEventListener('DOMContentLoaded', initComponents);
