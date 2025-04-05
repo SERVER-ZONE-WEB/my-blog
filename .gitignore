@@ -1,0 +1,17 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node modules (if used)
+node_modules/
+
+# Build folders
+dist/
+build/
+public/
+
+# Environment files (in case of future usage)
+.env
