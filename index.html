@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Server Zone - Your All-in-One Tech Platform</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
@@ -26,19 +26,19 @@
     </main>
 
     <div id="footer-container"></div>
-    <script src="/js/main.js"></script>
+    <script src="./js/main.js"></script>
     <script>
         // Auto-update blog posts
         function loadLatestBlogs() {
-            fetch('/api/posts.json')
+            fetch('./api/posts.json')
                 .then(response => response.json())
-                .then(posts => {
+                .then(data => {
                     const container = document.getElementById('blog-container');
-                    container.innerHTML = posts.slice(0, 5).map(post => `
+                    container.innerHTML = data.posts.slice(0, 5).map(post => `
                         <article class="blog-preview">
                             <h3>${post.title}</h3>
                             <p>${post.excerpt}</p>
-                            <a href="/blog/${post.slug}">Read more</a>
+                            <a href="./blog/${post.slug}.html">Read more</a>
                         </article>
                     `).join('');
                 })
