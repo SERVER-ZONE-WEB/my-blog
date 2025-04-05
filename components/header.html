@@ -2,35 +2,46 @@
     <nav class="main-nav">
         <div class="logo">
             <a href="./index.html">Server Zone</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
         <ul class="nav-links">
             <li><a href="./index.html">Home</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle">Education <i class="fas fa-chevron-down"></i></a>
+            <li class="dropdown" data-dropdown>
+                <button class="dropdown-toggle" data-dropdown-toggle>
+                    Education <i class="fas fa-chevron-down"></i>
+                </button>
                 <ul class="dropdown-menu">
                     <li><a href="./education/courses.html">Courses</a></li>
                     <li><a href="./education/tutorials.html">Tutorials</a></li>
                     <li><a href="./education/resources.html">Resources</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle">Tools <i class="fas fa-chevron-down"></i></a>
+            <li class="dropdown" data-dropdown>
+                <button class="dropdown-toggle" data-dropdown-toggle>
+                    Tools <i class="fas fa-chevron-down"></i>
+                </button>
                 <ul class="dropdown-menu">
                     <li><a href="./tools/converter.html">File Converter</a></li>
                     <li><a href="./tools/calculator.html">Calculator</a></li>
                     <li><a href="./tools/generator.html">Code Generator</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+            <li class="dropdown" data-dropdown>
+                <button class="dropdown-toggle" data-dropdown-toggle>
+                    Services <i class="fas fa-chevron-down"></i>
+                </button>
                 <ul class="dropdown-menu">
                     <li><a href="./services/hosting.html">Web Hosting</a></li>
                     <li><a href="./services/cloud.html">Cloud Storage</a></li>
                     <li><a href="./services/analytics.html">Analytics</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
-                <a href="./blog.html" class="dropdown-toggle">Blog <i class="fas fa-chevron-down"></i></a>
+            <li class="dropdown" data-dropdown>
+                <button class="dropdown-toggle" data-dropdown-toggle>
+                    Blog <i class="fas fa-chevron-down"></i>
+                </button>
                 <ul class="dropdown-menu">
                     <li><a href="./blog.html?category=security">Security</a></li>
                     <li><a href="./blog.html?category=web-dev">Web Development</a></li>
@@ -38,8 +49,10 @@
                     <li><a href="./blog.html?category=design">Design</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
-                <a href="./projects.html" class="dropdown-toggle">Projects <i class="fas fa-chevron-down"></i></a>
+            <li class="dropdown" data-dropdown>
+                <button class="dropdown-toggle" data-dropdown-toggle>
+                    Projects <i class="fas fa-chevron-down"></i>
+                </button>
                 <ul class="dropdown-menu">
                     <li><a href="./projects.html#security">Security Tools</a></li>
                     <li><a href="./projects.html#web-dev">Web Development</a></li>
@@ -51,7 +64,9 @@
             <li><a href="https://www.buymeacoffee.com/codewithchiru" target="_blank" rel="noopener" class="buy-me-book">
                 <i class="fas fa-book"></i> Book
             </a></li>
-            <li><button id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon"></i></button></li>
+            <li><button id="theme-toggle" title="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button></li>
         </ul>
     </nav>
 </header>
