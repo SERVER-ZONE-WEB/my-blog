@@ -1,0 +1,15 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "title": "Getting Started with Web Development",
+            "category": "web-dev",
+            "date": "2024-01-15",
+            "author": "John Doe",
+            "image": "images/blog/web-dev.jpg",
+            "summary": "Learn the fundamentals of web development and start your journey.",
+            "content": "<div class='post-content'><img src='images/blog/web-dev.jpg' alt='Web Development'><p>Complete guide to start web development...</p></div>",
+            "tags": ["HTML", "CSS", "JavaScript"]
+        }
+    ]
+}

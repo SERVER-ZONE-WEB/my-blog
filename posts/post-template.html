@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Post Title] - Ankur Goswami</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="header"></div>
+    
+    <article class="blog-post-content">
+        <h1>[Post Title]</h1>
+        <div class="post-meta">
+            <span><i class="far fa-user"></i> Ankur Goswami</span>
+            <span><i class="far fa-calendar"></i> [Date]</span>
+        </div>
+        
+        <img src="images/cover.jpg" alt="[Post Title]">
+        
+        <!-- Post content goes here -->
+        
+        <div class="post-footer">
+            <a href="../../blog.html" class="back-to-blog">← Back to Blog</a>
+        </div>
+    </article>
+
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function() {
+            $("#header").load("../../components/header.html");
+            $("#footer").load("../../components/footer.html");
+        });
+    </script>
+</body>
+</html>

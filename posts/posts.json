@@ -1,0 +1,22 @@
+{
+    "posts": [
+        {
+            "id": "cybersecurity-guide",
+            "title": "Cybersecurity: The Ultimate Guide",
+            "category": "security",
+            "date": "2024-01-15",
+            "author": "Ankur Goswami",
+            "image": "./posts/cybersecurity-guide/images/cover.jpg",
+            "content": "./posts/cybersecurity-guide/posts/post1/cybersecurity-basic.html"
+        },
+        {
+            "id": "web-development-basics",
+            "title": "Web Development Basics",
+            "category": "web-dev",
+            "date": "2024-01-20",
+            "author": "Ankur Goswami",
+            "image": "./posts/web-development-basics/images/cover.jpg",
+            "content": "./posts/web-development-basics/webdevelopment.html"
+        }
+    ]
+}

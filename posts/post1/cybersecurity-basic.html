@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A complete guide to cybersecurity covering threats, solutions, and best practices for individuals and businesses.">
+    <meta name="keywords" content="cybersecurity, ethical hacking, penetration testing, online security, data protection">
+    <meta name="author" content="Ankur Goswami">
+    <title>Cybersecurity: The Ultimate Guide to Online Safety</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+        header {
+            text-align: center;
+            background: #0073e6;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .social-share {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            border: none;
+            background: #0073e6;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cybersecurity: The Ultimate Guide to Online Safety</h1>
+    </header>
+    <article>
+        <img src="posts\post1\images\cybersecurity.png" alt="Cybersecurity Image">
+        <p>Cybersecurity is the practice of protecting systems, networks, and data from digital attacks. With the increasing dependence on technology, the risks associated with cyber threats have multiplied...</p>
+        
+        <h2>What is Cybersecurity?</h2>
+        <p>Cybersecurity involves protecting internet-connected systems, including hardware, software, and data, from cyber threats. It is essential for individuals and businesses to stay protected from potential cyberattacks...</p>
+        
+        <h2>Common Cyber Threats</h2>
+        <ul>
+            <li>Phishing Attacks</li>
+            <li>Malware and Ransomware</li>
+            <li>Data Breaches</li>
+            <li>Denial-of-Service (DoS) Attacks</li>
+            <li>Social Engineering</li>
+        </ul>
+        
+        <h2>How to Stay Safe Online</h2>
+        <p>To ensure cybersecurity, follow these best practices:</p>
+        <ul>
+            <li>Use strong and unique passwords</li>
+            <li>Enable two-factor authentication (2FA)</li>
+            <li>Keep software and operating systems updated</li>
+            <li>Avoid suspicious emails and links</li>
+            <li>Use a reliable antivirus and firewall</li>
+        </ul>
+        
+        <h2>Importance of Cybersecurity for Businesses</h2>
+        <p>Organizations handle vast amounts of sensitive data, making them prime targets for cybercriminals. Implementing strong security measures, regular audits, and employee training can significantly reduce cyber risks...</p>
+        
+        <h2>Ethical Hacking and Penetration Testing</h2>
+        <p>Ethical hackers, also known as white-hat hackers, use their skills to identify and fix security vulnerabilities before cybercriminals can exploit them. Penetration testing helps businesses assess their security posture...</p>
+    </article>
+    
+    <div class="social-share">
+        <p>Share this post:</p>
+        <button onclick="likePost()">Like <span id="likeCount">0</span></button>
+        <button onclick="sharePost('facebook')">Share on Facebook</button>
+        <button onclick="sharePost('twitter')">Share on Twitter</button>
+    </div>
+    
+    <script>
+        let likeCount = 0;
+
+        function likePost() {
+            likeCount++;
+            document.getElementById("likeCount").innerText = likeCount;
+        }
+
+        function sharePost(platform) {
+            let url = encodeURIComponent(window.location.href);
+            if (platform === 'facebook') {
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+            } else if (platform === 'twitter') {
+                window.open(`https://twitter.com/intent/tweet?url=${url}`, '_blank');
+            }
+        }
+    </script>
+</body>
+</html>
