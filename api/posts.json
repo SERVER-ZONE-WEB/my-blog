@@ -1,0 +1,16 @@
+{
+    "posts": [
+        {
+            "title": "Getting Started with Web Development",
+            "slug": "web-dev-intro",
+            "excerpt": "Learn the basics of web development...",
+            "date": "2024-01-20"
+        },
+        {
+            "title": "Essential Security Tools",
+            "slug": "security-tools",
+            "excerpt": "Must-have security tools for developers...",
+            "date": "2024-01-19"
+        }
+    ]
+}

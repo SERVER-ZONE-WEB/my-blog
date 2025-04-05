@@ -306,41 +306,113 @@ window.addEventListener('popstate', (event) => {
     }
 });
 
-// Component loader
-async function loadComponent(elementId, componentPath) {
+// Load components
+async function loadComponent(elementId, path) {
     try {
-        const response = await fetch(componentPath);
+        const response = await fetch(path);
         const html = await response.text();
         document.getElementById(elementId).innerHTML = html;
+        
+        // Reinitialize components after loading
+        if (elementId === 'header-container') {
+            initializeThemeToggle();
+        }
     } catch (error) {
         console.error('Error loading component:', error);
     }
 }
 
-// Theme toggler
-function initThemeToggle() {
+// Theme toggle functionality
+function initializeThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     
     // Set initial theme
-    document.body.classList.toggle('dark-theme', prefersDark.matches);
+    document.body.classList.toggle('dark-theme', 
+        localStorage.getItem('theme') === 'dark' || 
+        (!localStorage.getItem('theme') && prefersDark.matches)
+    );
     
     themeToggle?.addEventListener('click', () => {
         document.body.classList.toggle('dark-theme');
         localStorage.setItem('theme', 
             document.body.classList.contains('dark-theme') ? 'dark' : 'light'
         );
+        updateThemeIcon();
     });
+    
+    updateThemeIcon();
 }
+
+function updateThemeIcon() {
+    const icon = document.querySelector('#theme-toggle i');
+    if (icon) {
+        icon.className = document.body.classList.contains('dark-theme') 
+            ? 'fas fa-sun' 
+            : 'fas fa-moon';
+    }
+}
+
+// About page popup functions
+function showAbout() {
+    document.getElementById('about-content').style.display = 'block';
+    closeContactPopup();
+}
+
+function showContactPopup() {
+    document.getElementById('contact-popup').style.display = 'flex';
+}
+
+function closeContactPopup() {
+    document.getElementById('contact-popup').style.display = 'none';
+}
+
+// Initialize popup events
+document.addEventListener('DOMContentLoaded', () => {
+    const blogPostsDiv = document.getElementById('blogPosts');
+    if (blogPostsDiv) {
+        blogPostsDiv.innerHTML = '<div class="loading">Loading posts...</div>';
+        loadPosts();
+    }
+
+    // Add search input listener
+    const searchBar = document.getElementById('searchBar');
+    if (searchBar) {
+        searchBar.addEventListener('input', debounce(() => {
+            filterPosts();
+        }, 300));
+    }
+
+    // Add category button listeners
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterByCategory(btn.getAttribute('data-category'));
+        });
+    });
+    
+    // Add popup click handler
+    const contactPopup = document.getElementById('contact-popup');
+    if (contactPopup) {
+        contactPopup.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeContactPopup();
+            }
+        });
+    }
+});
 
 // Initialize components
-async function initComponents() {
-    await Promise.all([
-        loadComponent('header-container', '/components/header.html'),
-        loadComponent('footer-container', '/components/footer.html')
-    ]);
-    initThemeToggle();
-}
-
-// Run initialization
-document.addEventListener('DOMContentLoaded', initComponents);
+document.addEventListener('DOMContentLoaded', () => {
+    loadComponent('header-container', '/components/header.html');
+    loadComponent('footer-container', '/components/footer.html');
+    
+    // Handle contact form submission if on contact page
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Form submitted! (Note: This is just a demo - no backend processing)');
+            contactForm.reset();
+        });
+    }
+});

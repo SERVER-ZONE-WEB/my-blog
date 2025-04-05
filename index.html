@@ -3,154 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Ankur Goswami | Security Articles & Web Development</title>
-    <meta name="description" content="Explore in-depth articles on cybersecurity, penetration testing, and web development by Ankur Goswami.">
-    <meta name="keywords" content="cybersecurity, web development, penetration testing, security articles">
-    <meta name="author" content="Ankur Goswami">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Security & Development Blog - Ankur Goswami">
-    <meta property="og:description" content="Expert insights on cybersecurity and web development">
-    <meta property="og:image" content="/images/blog/featured/blog-cover.jpg">
-    
-    <link rel="canonical" href="https://yoursite.com/blog">
-    <link rel="stylesheet" href="css/blog.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Server Zone - Your All-in-One Tech Platform</title>
+    <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div id="header"></div>
+    <div id="header-container"></div>
 
     <main>
-        <div class="blog-hero">
-            <h1>Latest Security Insights & Articles</h1>
-            <p class="subtitle">Deep dives into cybersecurity, penetration testing, and secure web development</p>
-        </div>
+        <section class="hero">
+            <h1>Welcome to Server Zone</h1>
+            <p>Your complete platform for education, tools, and services</p>
+        </section>
 
-        <div id="blogContent">
-            <!-- Blog list view -->
-            <div id="blogList">
-                <div class="blog-filters">
-                    <div class="blog-search">
-                        <span class="search-text">Blog Search</span>
-                        <input type="text" placeholder="Search blog posts..." class="search-input">
-                        <button class="search-btn" title="Search"><i class="fas fa-search"></i></button>
-                        <button class="mic-btn" title="Activate microphone"><i class="fas fa-microphone"></i></button>
-                    </div>
-                </div>
-                
-                <div class="blog-posts-list">
-                    <!-- Security Category -->
-                    <div class="blog-category">
-                        <h2><i class="fas fa-shield-alt"></i> Security</h2>
-                        <div class="post-links">
-                            <a href="./posts/cybersecurity-guide/index.html" class="post-link">
-                                <span class="post-date">Jan 15, 2024</span>
-                                <span class="post-title">Cybersecurity: The Ultimate Guide</span>
-                            </a>
-                            <a href="./posts/security-tools/index.html" class="post-link">
-                                <span class="post-date">Jan 20, 2024</span>
-                                <span class="post-title">Essential Security Tools for Developers</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Web Development Category -->
-                    <div class="blog-category">
-                        <h2><i class="fas fa-code"></i> Web Development</h2>
-                        <div class="post-links">
-                            <a href="./posts/web-development-basics/index.html" class="post-link">
-                                <span class="post-date">Jan 25, 2024</span>
-                                <span class="post-title">Getting Started with Web Development</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <section class="services">
+            <!-- Auto-updated blog posts section -->
+            <div id="latest-blogs">
+                <h2>Latest Blog Posts</h2>
+                <div id="blog-container"></div>
             </div>
-
-            <!-- Post Content Sections -->
-            <div id="postView" class="hidden">
-                <!-- Post 1 Content -->
-                <div id="post1" class="post-content hidden">
-                    <button class="back-btn" onclick="showBlogList()">
-                        <i class="fas fa-arrow-left"></i> Back to Articles
-                    </button>
-                    <article>
-                        <header>
-                            <h1>Cybersecurity: The Ultimate Guide</h1>
-                            <div class="post-meta">
-                                <span><i class="far fa-user"></i> Ankur Goswami</span>
-                                <span><i class="far fa-calendar"></i> January 15, 2024</span>
-                            </div>
-                        </header>
-                        <img src="posts/post1/images/cybersecurity.png" alt="Cybersecurity Guide">
-                        <div class="post-content">
-                            <!-- Post content goes here -->
-                            <p>Cybersecurity is the practice of protecting systems...</p>
-                            <!-- Add full post content -->
-                        </div>
-                        <div class="share-buttons">
-                            <button onclick="sharePost('twitter')" title="Share on Twitter"><i class="fab fa-twitter"></i></button>
-                            <button onclick="sharePost('facebook')" title="Share on Facebook"><i class="fab fa-facebook"></i></button>
-                            <button onclick="likePost()" class="like-btn">
-                                <i class="far fa-heart"></i> <span class="like-count">0</span>
-                            </button>
-                        </div>
-                    </article>
-                </div>
-                <!-- Add more post content sections here -->
-            </div>
-        </div>
+        </section>
     </main>
 
-    <div id="footer"></div>
-    
+    <div id="footer-container"></div>
+    <script src="/js/main.js"></script>
     <script>
-        // Error handling for component loading
-        $(document).ready(function() {
-            const loadComponent = (id, path) => {
-                $(`#${id}`).load(path, function(response, status, xhr) {
-                    if (status === "error") {
-                        console.error(`Error loading ${path}: ${xhr.status} ${xhr.statusText}`);
-                        $(`#${id}`).html(`<div class="error">Failed to load component</div>`);
-                    }
-                });
-            };
-
-            loadComponent("header", "components/header.html");
-            loadComponent("footer", "components/footer.html");
-        });
-
-        // Initialize blog with URL handling
-        document.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            const postId = params.get('post');
-            
-            if (postId) {
-                loadPost(postId);
-            } else {
-                loadBlogList();
-            }
-        });
-    </script>
-    <script src="js/blog.js"></script>
-    <script src="js/script.js"></script>
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Blog",
-        "name": "Ankur Goswami's Security Blog",
-        "description": "Expert articles on cybersecurity and web development",
-        "url": "https://yoursite.com/blog",
-        "author": {
-            "@type": "Person",
-            "name": "Ankur Goswami"
+        // Auto-update blog posts
+        function loadLatestBlogs() {
+            fetch('/api/posts.json')
+                .then(response => response.json())
+                .then(posts => {
+                    const container = document.getElementById('blog-container');
+                    container.innerHTML = posts.slice(0, 5).map(post => `
+                        <article class="blog-preview">
+                            <h3>${post.title}</h3>
+                            <p>${post.excerpt}</p>
+                            <a href="/blog/${post.slug}">Read more</a>
+                        </article>
+                    `).join('');
+                })
+                .catch(error => console.error('Error loading blogs:', error));
         }
-    }
+
+        // Load initially and refresh every 5 minutes
+        loadLatestBlogs();
+        setInterval(loadLatestBlogs, 300000);
     </script>
 </body>
 </html>
