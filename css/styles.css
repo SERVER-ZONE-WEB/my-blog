@@ -5,6 +5,9 @@
     --accent-color: #0066cc;
     --header-bg: #f8f9fa;
     --footer-bg: #f8f9fa;
+    --eye-comfort-bg: #f4ecd8;
+    --eye-comfort-text: #5c4b51;
+    --eye-comfort-accent: #7c6a70;
 }
 
 .dark-theme {
@@ -13,6 +16,14 @@
     --accent-color: #66b3ff;
     --header-bg: #2d2d2d;
     --footer-bg: #2d2d2d;
+}
+
+.eye-comfort-theme {
+    --bg-color: var(--eye-comfort-bg);
+    --text-color: var(--eye-comfort-text);
+    --accent-color: var(--eye-comfort-accent);
+    --header-bg: #ece5d4;
+    --footer-bg: #ece5d4;
 }
 
 body {
@@ -879,4 +890,57 @@ button {
         box-shadow: none;
         padding-left: 1rem;
     }
+}
+
+/* Improve clickability */
+a, button, .clickable {
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.blog-preview {
+    background: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+    transition: transform 0.2s;
+}
+
+.blog-preview:hover {
+    transform: translateY(-2px);
+}
+
+.blog-preview a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--accent-color);
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+.blog-preview a:hover {
+    background: var(--accent-color);
+    opacity: 0.9;
+}
+
+/* Ensure dropdowns are clickable */
+.dropdown-menu {
+    z-index: 100;
+    pointer-events: auto;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.dropdown-menu a:hover {
+    background: var(--accent-color);
+    color: white;
 }

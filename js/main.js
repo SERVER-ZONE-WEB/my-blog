@@ -325,31 +325,35 @@ async function loadComponent(elementId, path) {
 // Theme toggle functionality
 function initializeThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const icon = themeToggle.querySelector('i');
     
-    // Set initial theme
-    document.body.classList.toggle('dark-theme', 
-        localStorage.getItem('theme') === 'dark' || 
-        (!localStorage.getItem('theme') && prefersDark.matches)
-    );
-    
+    // Get saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.body.className = savedTheme;
+        updateThemeIcon(icon, savedTheme);
+    }
+
     themeToggle?.addEventListener('click', () => {
-        document.body.classList.toggle('dark-theme');
-        localStorage.setItem('theme', 
-            document.body.classList.contains('dark-theme') ? 'dark' : 'light'
-        );
-        updateThemeIcon();
+        if (document.body.classList.contains('eye-comfort-theme')) {
+            document.body.className = '';
+        } else {
+            document.body.className = 'eye-comfort-theme';
+        }
+        
+        // Save theme preference
+        localStorage.setItem('theme', document.body.className);
+        updateThemeIcon(icon, document.body.className);
     });
-    
-    updateThemeIcon();
 }
 
-function updateThemeIcon() {
-    const icon = document.querySelector('#theme-toggle i');
-    if (icon) {
-        icon.className = document.body.classList.contains('dark-theme') 
-            ? 'fas fa-sun' 
-            : 'fas fa-moon';
+function updateThemeIcon(icon, theme) {
+    if (theme.includes('eye-comfort')) {
+        icon.className = 'fas fa-eye-slash';
+        icon.parentElement.title = 'Switch to Normal Mode';
+    } else {
+        icon.className = 'fas fa-eye';
+        icon.parentElement.title = 'Switch to Eye Comfort Mode';
     }
 }
 
@@ -506,4 +510,57 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+});
+
+// Blog loading functionality
+function loadLatestBlogs() {
+    fetch('./api/posts.json')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('blog-container');
+            if (container) {
+                container.innerHTML = data.posts.slice(0, 5).map(post => `
+                    <article class="blog-preview clickable">
+                        <h3>${post.title}</h3>
+                        <p>${post.excerpt}</p>
+                        <a href="./blog/${post.slug}.html">Read more</a>
+                    </article>
+                `).join('');
+            }
+        })
+        .catch(error => console.error('Error loading blogs:', error));
+}
+
+// Contact popup functions
+function showContactPopup() {
+    const popup = document.getElementById('contact-popup');
+    if (popup) popup.style.display = 'flex';
+}
+
+function closeContactPopup() {
+    const popup = document.getElementById('contact-popup');
+    if (popup) popup.style.display = 'none';
+}
+
+// Initialize all functionality
+document.addEventListener('DOMContentLoaded', () => {
+    // Load components
+    loadComponent('header-container', './components/header.html');
+    loadComponent('footer-container', './components/footer.html');
+    
+    // Initialize blog loading if on index page
+    if (document.getElementById('blog-container')) {
+        loadLatestBlogs();
+        setInterval(loadLatestBlogs, 300000);
+    }
+    
+    // Initialize contact form if exists
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Message sent! (Demo only)');
+            closeContactPopup();
+        });
+    }
 });

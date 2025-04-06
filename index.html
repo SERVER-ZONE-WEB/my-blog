@@ -27,27 +27,5 @@
 
     <div id="footer-container"></div>
     <script src="./js/main.js"></script>
-    <script>
-        // Auto-update blog posts
-        function loadLatestBlogs() {
-            fetch('./api/posts.json')
-                .then(response => response.json())
-                .then(data => {
-                    const container = document.getElementById('blog-container');
-                    container.innerHTML = data.posts.slice(0, 5).map(post => `
-                        <article class="blog-preview">
-                            <h3>${post.title}</h3>
-                            <p>${post.excerpt}</p>
-                            <a href="./blog/${post.slug}.html">Read more</a>
-                        </article>
-                    `).join('');
-                })
-                .catch(error => console.error('Error loading blogs:', error));
-        }
-
-        // Load initially and refresh every 5 minutes
-        loadLatestBlogs();
-        setInterval(loadLatestBlogs, 300000);
-    </script>
 </body>
 </html>
